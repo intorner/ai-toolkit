@@ -46,6 +46,7 @@
 
 ## 重要文件
 
+- 初始化索引：`G:\Agent\Project\ai-toolkit\README-初始化規則.md`
 - 初始化模板：`G:\Agent\Project\ai-toolkit\專案初始化模板.md`
 - 欄位規格：`G:\Agent\Project\ai-toolkit\CLAUDE欄位規格.md`
 - 工作筆記：`G:\Agent\2ndbrain\筆記庫\ai-toolkit\工作筆記.md`
