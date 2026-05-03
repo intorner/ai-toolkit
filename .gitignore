@@ -1,0 +1,17 @@
+# Cloud sync system files
+desktop.ini
+*.tmp
+~$*
+
+# Sensitive data
+.env
+*.key
+credentials.*
+
+# Local agent settings
+.claude/
+.codex/
+
+# Node.js
+node_modules/
+package-lock.json
