@@ -1,6 +1,6 @@
 # 初始化文件索引
 
-> 版本：v0.2
+> 版本：v0.3
 > 更新日期：2026-05-03
 
 這份索引用來快速定位 `ai-toolkit` 專案內和「多專案初始化規則」有關的核心文件。
@@ -13,6 +13,7 @@
 - 修正 `CLAUDE.md` 欄位設計
 - 執行初始化後驗證
 - 排查既有專案補初始化問題
+- 在 Windows / Linux / 不同設備間共用初始化規則
 
 請先從這份索引開始。
 
@@ -52,6 +53,18 @@
 - 想理解這個專案到底管什麼
 - 想知道初始化系統的核心原則
 - 想確認目前規則是否已升級成多專案版
+
+---
+
+### 1.1 跨設備路徑
+
+- 檔案：`跨設備路徑規則.md`
+- 用途：定義 `AI_TOOLKIT_ROOT`、`PROJECTS_ROOT`、`OBSIDIAN_VAULT_ROOT`、`CODEX_HOME`，避免文件綁定某一台電腦的絕對路徑
+
+適合在這些情況先看：
+- 同一套文件要在 Windows 和 Linux 使用
+- 雲端同步後，每台設備的專案位置不同
+- 想判斷哪些路徑應該寫進共享文件，哪些應該留在本機設定
 
 ---
 
@@ -121,10 +134,11 @@
 ### 情境一：要建立新專案
 
 1. `新專案初始化表單.md`
-2. `CLAUDE.md`
-3. `專案初始化模板.md`
-4. `CLAUDE欄位規格.md`
-5. `初始化驗證清單.md`
+2. `跨設備路徑規則.md`
+3. `CLAUDE.md`
+4. `專案初始化模板.md`
+5. `CLAUDE欄位規格.md`
+6. `初始化驗證清單.md`
 
 ### 情境二：要幫既有專案補初始化
 
@@ -146,6 +160,7 @@
 ## 核心原則摘要
 
 - `CLAUDE.md` 是每個專案的單一真相來源
+- 共享文件使用相對路徑與本機路徑變數，不綁死單一設備
 - `startup` / `shutdown` 必須先讀 `CLAUDE.md`
 - Obsidian 工作筆記固定走 `專案庫/<專案代號>/工作筆記.md`
 - `專案顯示名稱`、`專案代號`、`GitHub repo slug` 要分開
@@ -169,15 +184,16 @@
 
 ## 目前核心文件位置
 
-- [`新專案初始化表單.md`](</G:/Agent/Project/ai-toolkit/新專案初始化表單.md>)
-- [`新專案口令規則.md`](</G:/Agent/Project/ai-toolkit/新專案口令規則.md>)
-- [`CLAUDE.md`](</G:/Agent/Project/ai-toolkit/CLAUDE.md>)
-- [`專案初始化模板.md`](</G:/Agent/Project/ai-toolkit/專案初始化模板.md>)
-- [`CLAUDE欄位規格.md`](</G:/Agent/Project/ai-toolkit/CLAUDE欄位規格.md>)
-- [`初始化驗證清單.md`](</G:/Agent/Project/ai-toolkit/初始化驗證清單.md>)
-- [`既有專案補初始化SOP.md`](</G:/Agent/Project/ai-toolkit/既有專案補初始化SOP.md>)
-- [`examples/standard-project/CLAUDE.md`](</G:/Agent/Project/ai-toolkit/examples/standard-project/CLAUDE.md>)
-- [`工作筆記.md`](</G:/Agent/2ndbrain/筆記庫/ai-toolkit/工作筆記.md>)
+- `新專案初始化表單.md`
+- `新專案口令規則.md`
+- `跨設備路徑規則.md`
+- `CLAUDE.md`
+- `專案初始化模板.md`
+- `CLAUDE欄位規格.md`
+- `初始化驗證清單.md`
+- `既有專案補初始化SOP.md`
+- `examples/standard-project/CLAUDE.md`
+- `專案庫/ai-toolkit/工作筆記.md`（相對於 `OBSIDIAN_VAULT_ROOT`）
 
 ---
 

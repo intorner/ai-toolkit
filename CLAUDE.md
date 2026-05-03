@@ -3,7 +3,7 @@
 ## 專案識別
 - 專案顯示名稱：`ai-toolkit`
 - 專案代號：`ai-toolkit`
-- 工作根目錄：`G:\Agent\Project\ai-toolkit`
+- 工作根目錄：`<AI_TOOLKIT_ROOT>`
 - GitHub repo：`intorner/ai-toolkit`
 - Obsidian 工作筆記：`專案庫/ai-toolkit/工作筆記.md`
 - Firebase 專案：`my-teaching-tools`
@@ -28,6 +28,7 @@
 若要初始化其他專案，優先閱讀：
 - `新專案初始化表單.md`
 - `新專案口令規則.md`
+- `跨設備路徑規則.md`
 - `專案初始化模板.md`
 - `CLAUDE欄位規格.md`
 
@@ -43,26 +44,29 @@
 
 - `CLAUDE.md` 是每個專案的單一真相來源
 - `startup` / `shutdown` 必須先讀 `CLAUDE.md`，不能寫死單一專案路徑
+- 共享文件優先使用相對路徑與本機路徑變數，不綁定單一設備的絕對路徑
 - Obsidian 工作筆記固定使用 `專案庫/<專案代號>/工作筆記.md`
 - `專案顯示名稱`、`專案代號`、`GitHub repo slug` 必須分開管理
 - 新專案初始化與既有專案補初始化必須分流處理
 
 ## 重要文件
 
-- 新專案表單：`G:\Agent\Project\ai-toolkit\新專案初始化表單.md`
-- 新專案口令：`G:\Agent\Project\ai-toolkit\新專案口令規則.md`
-- 初始化索引：`G:\Agent\Project\ai-toolkit\README-初始化規則.md`
-- 初始化模板：`G:\Agent\Project\ai-toolkit\專案初始化模板.md`
-- 欄位規格：`G:\Agent\Project\ai-toolkit\CLAUDE欄位規格.md`
-- 驗證清單：`G:\Agent\Project\ai-toolkit\初始化驗證清單.md`
-- 既有專案 SOP：`G:\Agent\Project\ai-toolkit\既有專案補初始化SOP.md`
-- 範例專案：`G:\Agent\Project\ai-toolkit\examples\standard-project\`
-- 工作筆記：`G:\Agent\2ndbrain\筆記庫\ai-toolkit\工作筆記.md`
+- 新專案表單：`新專案初始化表單.md`
+- 新專案口令：`新專案口令規則.md`
+- 跨設備路徑規則：`跨設備路徑規則.md`
+- 初始化索引：`README-初始化規則.md`
+- 初始化模板：`專案初始化模板.md`
+- 欄位規格：`CLAUDE欄位規格.md`
+- 驗證清單：`初始化驗證清單.md`
+- 既有專案 SOP：`既有專案補初始化SOP.md`
+- 範例專案：`examples/standard-project/`
+- 工作筆記：`專案庫/ai-toolkit/工作筆記.md`
 
 ## 工具清單
 
 - `新專案初始化表單.md`
 - `新專案口令規則.md`
+- `跨設備路徑規則.md`
 - `專案初始化模板.md`
 - `CLAUDE欄位規格.md`
 - `初始化驗證清單.md`
