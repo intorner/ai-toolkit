@@ -26,12 +26,15 @@
 進度與最近更動都在 Obsidian：`專案庫/ai-toolkit/工作筆記.md`
 
 若要初始化其他專案，優先閱讀：
+- `新專案初始化表單.md`
+- `新專案口令規則.md`
 - `專案初始化模板.md`
 - `CLAUDE欄位規格.md`
 
 ## 工作模式
 
 - **維護初始化規則**：修改 `專案初始化模板.md`、`CLAUDE欄位規格.md`、相關 SOP
+- **開始新專案**：使用者說「開始新專案」、「我要開始新專案」、「我要初始化新專案」、「開一個新專案」時，先讀 `新專案初始化表單.md`，再依表單初始化
 - **套用到其他專案**：依模板建立或補齊 `CLAUDE.md`、`.gitignore`、工作筆記與 git 設定
 - **結束工作**：對 Codex 說「**收工**」→ 先依 `CLAUDE.md` 找到正確的工作筆記與 repo，再進行同步
 - **接續工作**：對 Codex 說「讀工作筆記、告訴我上次做到哪」
@@ -46,19 +49,25 @@
 
 ## 重要文件
 
+- 新專案表單：`G:\Agent\Project\ai-toolkit\新專案初始化表單.md`
+- 新專案口令：`G:\Agent\Project\ai-toolkit\新專案口令規則.md`
 - 初始化索引：`G:\Agent\Project\ai-toolkit\README-初始化規則.md`
 - 初始化模板：`G:\Agent\Project\ai-toolkit\專案初始化模板.md`
 - 欄位規格：`G:\Agent\Project\ai-toolkit\CLAUDE欄位規格.md`
 - 驗證清單：`G:\Agent\Project\ai-toolkit\初始化驗證清單.md`
 - 既有專案 SOP：`G:\Agent\Project\ai-toolkit\既有專案補初始化SOP.md`
+- 範例專案：`G:\Agent\Project\ai-toolkit\examples\standard-project\`
 - 工作筆記：`G:\Agent\2ndbrain\筆記庫\ai-toolkit\工作筆記.md`
 
 ## 工具清單
 
+- `新專案初始化表單.md`
+- `新專案口令規則.md`
 - `專案初始化模板.md`
 - `CLAUDE欄位規格.md`
 - `初始化驗證清單.md`
 - `既有專案補初始化SOP.md`
+- `examples/standard-project/`
 - Codex `startup` / `shutdown` 多專案規則
 - Stop 備份安全網（目前為本機 auto-commit 版）
 
