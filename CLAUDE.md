@@ -49,12 +49,16 @@
 - 初始化索引：`G:\Agent\Project\ai-toolkit\README-初始化規則.md`
 - 初始化模板：`G:\Agent\Project\ai-toolkit\專案初始化模板.md`
 - 欄位規格：`G:\Agent\Project\ai-toolkit\CLAUDE欄位規格.md`
+- 驗證清單：`G:\Agent\Project\ai-toolkit\初始化驗證清單.md`
+- 既有專案 SOP：`G:\Agent\Project\ai-toolkit\既有專案補初始化SOP.md`
 - 工作筆記：`G:\Agent\2ndbrain\筆記庫\ai-toolkit\工作筆記.md`
 
 ## 工具清單
 
 - `專案初始化模板.md`
 - `CLAUDE欄位規格.md`
+- `初始化驗證清單.md`
+- `既有專案補初始化SOP.md`
 - Codex `startup` / `shutdown` 多專案規則
 - Stop 備份安全網（目前為本機 auto-commit 版）
 
