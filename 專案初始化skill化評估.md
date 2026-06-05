@@ -163,9 +163,34 @@ skill 必須遵守：
 - 不主動刪除既有檔案
 - 建立 GitHub repo、push、寫 Obsidian vault、修改本機 Codex skills 前，都應依當前環境權限取得確認
 
+## 目前實作狀態
+
+截至 2026-06-05，Windows 本機已建立 `project-initializer` skill 草案：
+
+```text
+C:\Users\intor\.codex\skills\project-initializer\SKILL.md
+C:\Users\intor\.codex\skills\project-initializer\agents\openai.yaml
+```
+
+目前草案已完成：
+
+- 觸發語與 skill description
+- `ai-toolkit` 規格來源讀取順序
+- 新專案 / 既有專案補初始化分流
+- 標準輸出檔案清單
+- Obsidian 工作筆記建立規則
+- git 初始化 / 既有 repo 檢查邊界
+- 安全規則與 `startup` / `shutdown` 分工
+
+驗證狀態：
+
+- 已用 PowerShell 做等價基本驗證：`SKILL.md` frontmatter、skill name、description、`agents/openai.yaml` 與 `ai-toolkit` 規格引用均正常。
+- 尚未執行 `skill-creator/scripts/quick_validate.py`，原因是目前 Windows Codex shell 找不到可用的 `python` 或 `py`。這不影響文字規則 skill 運作，但會影響 Python 驗證腳本與初始化腳本。
+
 ## 建議後續
 
-1. 先完成 `ai-toolkit` 文件規格升級。
-2. 再建立 `project-initializer` skill 草案。
-3. 用 `_Codex-Sync` 或低風險教材專案做試點。
-4. 驗證通過後，再讓 Windows 與 Altos GB10 F1 各自安裝同等 skill。
+1. 用 `_Codex-Sync` 或低風險教材專案試跑 Windows 本機 `project-initializer` 草案。
+2. 補可用 Python 後，執行 `skill-creator/scripts/quick_validate.py` 驗證 skill。
+3. 根據試跑結果修正 `project-initializer`。
+4. 修改 Windows `startup` / `shutdown` skills，讓它們讀寫專案內狀態檔。
+5. 驗證通過後，再讓 Windows 與 Altos GB10 F1 各自安裝同等 skill。

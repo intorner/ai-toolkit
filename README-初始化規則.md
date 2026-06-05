@@ -52,6 +52,7 @@
 
 結論摘要：
 - 可以做成 skill，但 skill 只負責「觸發、導引、檢查、套用模板」
+- 目前 Windows 本機已建立 `project-initializer` skill 草案，位置是 `<CODEX_HOME>/skills/project-initializer/`
 - 規格真相仍放在 `ai-toolkit` 文件內，不把完整模板硬寫死在 skill
 - skill 應讀取本 repo 的表單、模板、欄位規格與驗證清單後執行
 
