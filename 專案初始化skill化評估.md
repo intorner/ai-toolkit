@@ -1,7 +1,7 @@
 # 專案初始化 skill 化評估
 
-> 版本：v0.1
-> 更新日期：2026-06-05
+> 版本：v0.2
+> 更新日期：2026-06-06
 
 ## 結論
 
@@ -13,6 +13,7 @@
 - 讀取 `ai-toolkit` 的表單、模板、欄位規格、跨設備路徑規則與驗證清單
 - 引導使用者補齊缺少欄位
 - 依規格建立或補齊專案文件
+- 當 `startup` 發現既有專案缺狀態檔時，先啟動低風險狀態檔初始化
 - 初始化或檢查 git
 - 建立 Obsidian 工作筆記
 - 最後依 `初始化驗證清單.md` 驗證
@@ -80,6 +81,7 @@
 
 - 新專案：使用 `新專案初始化表單.md`
 - 既有專案：使用 `既有專案補初始化SOP.md`
+- 缺狀態檔：使用低風險狀態檔初始化，只補 `current-state.md`、`handoff.md`、`tasks.md`、`worklog.md`、`runbook.md`
 
 ### 2. 讀取規格來源
 
@@ -124,6 +126,30 @@ scripts/
 tools/
 ```
 
+### 4.1 低風險狀態檔初始化
+
+當使用者從 `startup` 結果接續，且專案已有 `CLAUDE.md` 或 Obsidian 工作筆記但缺少標準狀態檔時，skill 應執行低風險流程：
+
+1. 讀 `CLAUDE.md` 與 Obsidian 工作筆記
+2. 列出缺少哪些標準狀態檔
+3. 只建立或更新狀態管理檔
+4. 更新 Obsidian 工作筆記的 `上次做到哪` 與最近更動紀錄
+5. 不修改功能程式、腳本、設定檔、`.git`、`.env`、token、憑證或機器專屬設定
+6. 若目前在 NAS shared state/document path，只寫共享文件並略過 git
+7. 若目前在 local git working copy，只提交狀態管理檔
+
+可提交範圍限於：
+
+```text
+current-state.md
+handoff.md
+tasks.md
+worklog.md
+runbook.md
+```
+
+若需要將 NAS 上新增的狀態檔納入 git，應先同步到每台電腦自己的 local git working copy，再 commit / push。
+
 ### 5. 建立 Obsidian 工作筆記
 
 固定位置：
@@ -149,8 +175,8 @@ tools/
 | skill | 時機 | 主要動作 |
 |---|---|---|
 | `project-initializer` | 新專案或補初始化時 | 建立規格、文件、工作筆記、git 起點 |
-| `startup` | 開工接續時 | 讀 `CLAUDE.md`、專案內狀態檔、Obsidian 工作筆記、git 狀態 |
-| `shutdown` | 收工同步時 | 寫專案內狀態檔、Obsidian 工作筆記、commit / push |
+| `startup` | 開工接續時 | 讀 `CLAUDE.md`、專案內狀態檔、Obsidian 工作筆記、git 狀態；若缺狀態檔，建議低風險初始化 |
+| `shutdown` | 收工同步時 | 寫專案內狀態檔、Obsidian 工作筆記、commit / push；低風險初始化時只提交狀態管理檔 |
 
 ## 安全邊界
 
@@ -161,11 +187,12 @@ skill 必須遵守：
 - 不把 `.project-session/` 進版控
 - 不主動覆蓋既有 remote
 - 不主動刪除既有檔案
+- 低風險狀態檔初始化時，不修改功能程式、腳本或環境設定
 - 建立 GitHub repo、push、寫 Obsidian vault、修改本機 Codex skills 前，都應依當前環境權限取得確認
 
 ## 目前實作狀態
 
-截至 2026-06-05，Windows 本機已建立 `project-initializer` skill 草案：
+截至 2026-06-06，Windows 本機已建立並更新 `project-initializer` skill 草案：
 
 ```text
 C:\Users\intor\.codex\skills\project-initializer\SKILL.md
@@ -177,20 +204,21 @@ C:\Users\intor\.codex\skills\project-initializer\agents\openai.yaml
 - 觸發語與 skill description
 - `ai-toolkit` 規格來源讀取順序
 - 新專案 / 既有專案補初始化分流
+- 缺狀態檔時的低風險狀態檔初始化分流
 - 標準輸出檔案清單
 - Obsidian 工作筆記建立規則
 - git 初始化 / 既有 repo 檢查邊界
 - 安全規則與 `startup` / `shutdown` 分工
+- NAS shared state/document path 與 local git working copy 分流
 
 驗證狀態：
 
 - 已用 PowerShell 做等價基本驗證：`SKILL.md` frontmatter、skill name、description、`agents/openai.yaml` 與 `ai-toolkit` 規格引用均正常。
+- 已用 `linux-ime-like-windows` 做低風險狀態檔初始化試跑，確認可從缺狀態檔狀態補齊文件、再由 local git working copy commit / push。
 - 尚未執行 `skill-creator/scripts/quick_validate.py`，原因是目前 Windows Codex shell 找不到可用的 `python` 或 `py`。這不影響文字規則 skill 運作，但會影響 Python 驗證腳本與初始化腳本。
 
 ## 建議後續
 
-1. 用 `_Codex-Sync` 或低風險教材專案試跑 Windows 本機 `project-initializer` 草案。
-2. 補可用 Python 後，執行 `skill-creator/scripts/quick_validate.py` 驗證 skill。
-3. 根據試跑結果修正 `project-initializer`。
-4. 修改 Windows `startup` / `shutdown` skills，讓它們讀寫專案內狀態檔。
-5. 驗證通過後，再讓 Windows 與 Altos GB10 F1 各自安裝同等 skill。
+1. 補可用 Python 後，執行 `skill-creator/scripts/quick_validate.py` 驗證 skill。
+2. 用第二個低風險專案再測一次缺狀態檔初始化分流。
+3. 驗證通過後，再讓 Windows 與 Altos GB10 F1 各自安裝同等 skill。
