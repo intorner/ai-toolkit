@@ -1,7 +1,7 @@
 # 初始化文件索引
 
-> 版本：v0.4
-> 更新日期：2026-06-05
+> 版本：v0.5
+> 更新日期：2026-09-18
 
 這份索引用來快速定位 `ai-toolkit` 專案內和「多專案初始化規則」有關的核心文件。
 
@@ -17,6 +17,14 @@
 - 評估專案初始化是否適合做成 Codex skill
 
 請先從這份索引開始。
+
+## 2026-09-18 Modernization invariant
+
+- ChatGPT Project Instructions generation authority：`codex-sync/docs/chatgpt-project-bootstrap-library.md`。
+- `ai-toolkit` 只負責 Repository/project-state bootstrap，不複製 GB10/RDC/Codex/Hermes routing 細則。
+- 會使用 shared AI engineering capability 的 consumer，只在 `CLAUDE.md` 保留 thin `codex-sync` redirect。
+- Git init/add/commit/remote/push 均需獨立 Human write authorization；模板不得把初始化目的當成 Git/remote write 授權。
+- local path、Vault、Obsidian、model、tool binding、host/runner 都是 projection / current binding，不是 durable routing authority。
 
 ---
 
@@ -179,11 +187,11 @@
 
 ## 核心原則摘要
 
-- `CLAUDE.md` 是每個專案的單一真相來源
+- `current-state.md` 保存目前有效 Current Truth；`CLAUDE.md` 是 bootstrap/control entrypoint，不是單一真相來源
 - 共享文件使用相對路徑與本機路徑變數，不綁死單一設備
-- 跨 Windows / Linux / NAS 接續時，專案內固定狀態檔與 Obsidian 工作筆記並行
-- `startup` / `shutdown` 必須先讀 `CLAUDE.md`
-- Obsidian 工作筆記固定走 `專案庫/<專案代號>/工作筆記.md`
+- 跨 Windows / Linux / NAS 接續時，以 repo state files 為 durable authority；Obsidian 工作筆記是 optional projection
+- `startup` 先讀 `CLAUDE.md` 取得 authority pointers，再讀 `current-state.md`; shared startup/shutdown governance 由 `codex-sync` 維護
+- 若 Project 使用 Obsidian，可用 `專案庫/<專案代號>/工作筆記.md` 作 operational projection；不是初始化必備 authority
 - `專案顯示名稱`、`專案代號`、`GitHub repo slug` 要分開
 - 新專案初始化與既有專案補初始化要分流
 
