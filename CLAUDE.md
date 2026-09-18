@@ -3,82 +3,78 @@
 ## 專案識別
 - 專案顯示名稱：`ai-toolkit`
 - 專案代號：`ai-toolkit`
-- 工作根目錄：`<AI_TOOLKIT_ROOT>`
 - GitHub repo：`intorner/ai-toolkit`
-- Obsidian 工作筆記：`專案庫/ai-toolkit/工作筆記.md`
-- Firebase 專案：`my-teaching-tools`
+- Repository Current Truth / progress：依本 repo current state / durable work surface；local path 與 Obsidian 只作 projection。
+- Shared AI engineering / ChatGPT Project bootstrap authority：`codex-sync`
 
-## 這個專案的定位
+## 定位
 
-這不是單一工具專案，而是「多專案初始化規則總控專案」。
+本 repo 是「Repository project bootstrap / initialization template」規格來源，負責：
 
-它負責維護：
-- 專案初始化模板
-- `CLAUDE.md` 欄位規格
-- 新專案初始化 SOP
-- 既有專案補初始化 SOP
-- 與 `startup` / `shutdown` 對接的規則
+- Repository 基本結構與 state files
+- `CLAUDE.md` bootstrap/control entrypoint 規格
+- 新專案 / 既有專案初始化 SOP
+- 跨設備 local-path projection 規則
+- 初始化驗證清單
 
-若其他專案要套用這套工作模式，應以本專案的模板與規格文件為準。
+ChatGPT Project Instructions 不由本 repo 產生或維護；其 shared canonical generation authority 是：
+
+`codex-sync/docs/chatgpt-project-bootstrap-library.md`
+
+shared capability / GB10 / Codex / Hermes / RDC routing 也不在本 repo 複製，消費者只保留 thin redirect 到 `codex-sync`。
+
+## Authority model
+
+初始化後的 consumer Project 應遵守：
+
+1. `current-state.md`：目前仍有效的 Project Current Truth / resume surface。
+2. `CLAUDE.md`：bootstrap / control entrypoint；說明 Project identity、authority pointers、startup 與 shared routing redirect。
+3. Method / Spec / runbook / evidence：各自正式 authority。
+4. Obsidian / local work note：可選 operational projection / fast-changing notes，不是必備 Source of Truth。
+5. local working copy / host path / managed tool binding：projection only，可 stale / dirty。
+6. chat memory / historical conversation：reference only。
+
+`CLAUDE.md` 不再是「單一真相來源」，也不得把某個 host、Codex、Hermes、RDC、Obsidian MCP、model、endpoint 或 Vault drive 寫成永久 primary route。
 
 ## 對話開始時請先讀
 
-進度與最近更動都在 Obsidian：`專案庫/ai-toolkit/工作筆記.md`
-
-若要初始化其他專案，優先閱讀：
-- `新專案初始化表單.md`
-- `新專案口令規則.md`
-- `跨設備路徑規則.md`
+初始化規則維護：
+- `README-初始化規則.md`
 - `專案初始化模板.md`
 - `CLAUDE欄位規格.md`
+- `初始化驗證清單.md`
 
-## 工作模式
+建立 ChatGPT Project Instructions：
+- 讀 `codex-sync/docs/chatgpt-project-bootstrap-library.md`
 
-- **維護初始化規則**：修改 `專案初始化模板.md`、`CLAUDE欄位規格.md`、相關 SOP
-- **開始新專案**：使用者說「開始新專案」、「我要開始新專案」、「我要初始化新專案」、「開一個新專案」時，先讀 `新專案初始化表單.md`，再依表單初始化
-- **套用到其他專案**：依模板建立或補齊 `CLAUDE.md`、`.gitignore`、工作筆記與 git 設定
-- **結束工作**：對 Codex 說「**收工**」→ 先依 `CLAUDE.md` 找到正確的工作筆記與 repo，再進行同步
-- **接續工作**：對 Codex 說「讀工作筆記、告訴我上次做到哪」
+涉及 GB10/shared capability：
+- 依 `codex-sync` canonical bootstrap / routing，不在本 repo 發明或複製 routing。
 
 ## 規則核心
 
-- `CLAUDE.md` 是每個專案的單一真相來源
-- `startup` / `shutdown` 必須先讀 `CLAUDE.md`，不能寫死單一專案路徑
-- 共享文件優先使用相對路徑與本機路徑變數，不綁定單一設備的絕對路徑
-- Obsidian 工作筆記固定使用 `專案庫/<專案代號>/工作筆記.md`
-- `專案顯示名稱`、`專案代號`、`GitHub repo slug` 必須分開管理
-- 新專案初始化與既有專案補初始化必須分流處理
+- `current-state.md` 是 consumer Project 的 Current Truth surface；`CLAUDE.md` 是 bootstrap/control entrypoint。
+- Project-specific authority 留在 consumer repo；shared AI engineering authority 外移到 `codex-sync`。
+- shared routing 使用 thin redirect，不複製 mutable capability trigger、host、runner、model、fallback。
+- Obsidian / work note 是 optional projection；沒有它也能完成初始化。
+- 共享文件優先使用相對路徑 / semantic locator，不把單一設備絕對路徑當 authority。
+- 新專案初始化與既有專案 retrofit 分流。
+- Git init/add/commit/remote/push 都是 side effect；只有在 Human 明確授權對應 scope 後執行。
+- 不因初始化建立空的 future-facing docs/scripts/tools 目錄；只有真實需要時建立。
+- Durable Recording 只在長期、多階段、decision-rich project 啟用；checkpoint 不取代 Current Truth / Method / Spec。
 
 ## 重要文件
 
 - 新專案表單：`新專案初始化表單.md`
-- 新專案口令：`新專案口令規則.md`
-- 跨設備路徑規則：`跨設備路徑規則.md`
-- 初始化索引：`README-初始化規則.md`
 - 初始化模板：`專案初始化模板.md`
 - 欄位規格：`CLAUDE欄位規格.md`
 - 驗證清單：`初始化驗證清單.md`
 - 既有專案 SOP：`既有專案補初始化SOP.md`
-- 範例專案：`examples/standard-project/`
-- 工作筆記：`專案庫/ai-toolkit/工作筆記.md`
+- 跨設備路徑：`跨設備路徑規則.md`
+- 範例：`examples/standard-project/`
 
-## 工具清單
+## 安全邊界
 
-- `新專案初始化表單.md`
-- `新專案口令規則.md`
-- `跨設備路徑規則.md`
-- `專案初始化模板.md`
-- `CLAUDE欄位規格.md`
-- `初始化驗證清單.md`
-- `既有專案補初始化SOP.md`
-- `examples/standard-project/`
-- Codex `startup` / `shutdown` 多專案規則
-- Stop 備份安全網（目前為本機 auto-commit 版）
-
-## 工作注意事項
-
-- 若模板、技能與實測結果衝突，以實測可穩定套用為優先，再回寫模板
-- 若 `CLAUDE.md` 與工作筆記不一致，以 `CLAUDE.md` 為主，再修正工作筆記
-- 不要把 `.claude/`、`.codex/`、`.env` 納入版控
-- commit 訊息要寫清楚做了什麼 + 為什麼
-- 收工前說「收工」讓 Codex 同步三方
+- 不把 `.claude/`、`.codex/`、`.env`、credentials、private keys 納入版控。
+- 不把 Human authorization 當 transport。
+- 不因 initialization request 自動推定 Git write / remote write / deployment / service/runtime change authorization。
+- 不建立第二份 shared routing authority。
