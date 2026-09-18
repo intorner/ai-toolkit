@@ -1,100 +1,108 @@
 # CLAUDE.md 欄位規格
 
-> 版本：v0.3
-> 更新日期：2026-06-05
+> 版本：v0.4
+> 更新日期：2026-09-18
 
-這份文件補充 `CLAUDE.md` 在多專案工作模式中的必要欄位與用途。
+`CLAUDE.md` 是 Project bootstrap/control entrypoint，不是單一 Current Truth。
 
----
+## Required content
 
-## 必備欄位
+每個長期 / repository-backed Project 的 `CLAUDE.md` 至少應表達：
 
-建議每個專案的 `CLAUDE.md` 至少要能清楚表達：
+| 欄位/區塊 | 用途 |
+|---|---|
+| Project identity | 顯示名稱、代號、repository |
+| Project purpose / scope | 這個 Project 負責什麼、不負責什麼 |
+| Current Truth pointer | 通常指向 `current-state.md` |
+| Authority precedence | Project truth / shared authority / projections |
+| Startup bootstrap | 先讀什麼、何時停止 document expansion |
+| Shared capability redirect | 只指向 `codex-sync`，不複製 shared routing |
+| Authorization boundary | write/deploy/runtime/security等需 Human 授權 |
+| Do Not Reopen | 已 CLOSED/PASS/OPERATIONAL 不為 reassurance 重驗 |
+| Optional projections | local path / work note / platform support，如有 |
 
-| 欄位 | 用途 |
-|------|------|
-| 專案顯示名稱 | 給人讀的名稱 |
-| 專案代號 | 路徑、資料夾、工具識別 |
-| 工作根目錄 | 目前設備上的專案根目錄 |
-| Linux 對應路徑 | NAS 或 Linux 工作副本上的對應路徑，可空白 |
-| GitHub repo | 供 `startup` / `shutdown` 對照遠端 |
-| Obsidian 工作筆記 | 供 `startup` / `shutdown` 找正確筆記 |
-| 平台支援 | 標記 Windows / Linux / NAS 是否可直接操作 |
-| 專案內狀態檔 | `current-state.md`、`handoff.md`、`worklog.md`、`tasks.md`、`runbook.md` |
-| Firebase 專案 | 資料來源對照，可空白 |
+## Authority rules
 
----
+- `current-state.md` 保存目前有效 Current Truth。
+- `CLAUDE.md` 保存固定 bootstrap / project governance / authority pointers。
+- Method / Spec / runbook / evidence各自保留正式 authority。
+- Obsidian/work note可作 fast-changing operational projection，但不是 mandatory authority。
+- local working copy、drive letter、host path、model、MCP/tool binding、runner都是 current projection/binding，不得寫成跨設備永久 truth。
+- chat memory / historical conversation不是 authority。
 
-## 推薦寫法
+## Shared routing
+
+如果 Project 會使用 shared AI engineering / GB10 capability，`CLAUDE.md` 應只保留 thin redirect：
 
 ```markdown
-# <專案顯示名稱>
-
-## 專案識別
-- 專案代號：`<專案代號>`
-- 工作根目錄：`<工作根目錄>`
-- Linux 對應路徑：`<Linux 或 NAS 對應路徑，可空白>`
-- GitHub repo：`<GitHub帳號>/<GitHub repo slug>`
-- Obsidian 工作筆記：`專案庫/<專案代號>/工作筆記.md`
-- 平台支援：`Windows: <可操作/只讀/不適用>; Linux: <可操作/只讀/不適用>; NAS: <共享/不共享>`
-- 專案內狀態檔：`current-state.md; handoff.md; worklog.md; tasks.md; runbook.md`
-- Active session：`.project-session/active-session.json`（本機提醒用，勿進版控）
-- Firebase 專案：`<Firebase 專案名稱>`
+## Shared Capability Redirect
+- Shared AI engineering authority: `codex-sync`.
+- 涉及 shared capability 時，先做 existing-capability discovery並依 canonical routing選最窄 route。
+- 不在本 Project 複製 capability trigger、host/runner/model、fallback 或 mutable runtime detail。
+- 若涉及 GB10，讀 `codex-sync/docs/gb10-gpt-bootstrap.md` 與 canonical capability-routing index。
 ```
 
----
+不得把某個 Codex/Hermes/RDC/host綁定寫成永久 primary route。
 
-## 固定欄位名稱
+## Minimal template
 
-為了讓 `startup` / `shutdown` 能穩定解析，建議不要任意改名：
+```markdown
+# <Project Name>
 
-- `專案代號`
-- `工作根目錄`
-- `Linux 對應路徑`
-- `GitHub repo`
-- `Obsidian 工作筆記`
-- `Firebase 專案`
-- `平台支援`
-- `專案內狀態檔`
-- `Active session`
+## Project identity
+- Project code: `<code>`
+- Repository authority: `<owner/repo 或 local-only>`
+- Current Truth: `current-state.md`
+- Shared AI engineering authority: `codex-sync`（若適用）
 
-如果需要補充資訊，新增欄位即可，不要替換上述欄位名稱。
+## Purpose / Scope
+- <in scope>
+- <out of scope>
 
----
+## Authority
+1. Project Current Truth / accepted Method/Spec
+2. Human accepted decisions/evidence
+3. shared `codex-sync` authority（若適用）
+4. local/managed projections
+5. chat/memory reference only
 
-## 專案內狀態檔
+## Startup
+1. Read `CLAUDE.md`.
+2. Read `current-state.md`; judge sufficiency/freshness.
+3. Read only directly relevant downstream docs.
+4. For shared capability, follow canonical routing.
+5. Do not reopen CLOSED/PASS/OPERATIONAL work for reassurance.
 
-跨 Windows / Linux / NAS 接續時，只靠 Obsidian 工作筆記不夠，因為 Linux 端不一定掛載同一個 vault，且 Codex 需要可直接在專案 repo 內讀取的交接狀態。
+## Shared Capability Redirect
+- Keep shared routing externalized to `codex-sync`.
+- For GB10, use the canonical GB10 bootstrap/routing.
+- Human uses natural language; agent resolves Skill/workflow/route.
 
-建議每個正式專案補齊：
+## Authorization
+Repository/Git write, remote write/push, deployment, runtime/service, model/backend, package install, destructive filesystem, network/security, credential/secret and privilege operations require explicit Human authorization.
 
-| 檔案 | 用途 |
-|---|---|
-| `current-state.md` | 最短目前狀態，供 `startup` 快速讀取 |
-| `handoff.md` | 給下一台電腦或新對話的可執行交接 |
-| `worklog.md` | 可被 git 追蹤的工作紀錄 |
-| `tasks.md` | 待辦、決策、阻塞 |
-| `runbook.md` | 啟動、測試、部署與平台注意事項 |
-| `.project-session/active-session.json` | active session 提醒，不進版控，不當可靠鎖 |
+## Optional local projections
+- Work root: `<optional local path>`
+- Work note: `<optional semantic locator>`
+- Platform notes: `<optional>`
+```
 
-Obsidian `工作筆記.md` 仍保留作為人的駕駛艙與長期紀錄；專案內狀態檔則作為跨機器與 git 可追蹤的接續資料。
+## Prohibited legacy patterns
 
----
+不要生成：
+- 「`CLAUDE.md` 是單一真相來源」
+- 「若 CLAUDE 與 Current Truth 不同，以 CLAUDE 為主」
+- 固定 Windows drive / Vault root 作跨設備 authority
+- 固定 Codex / Hermes / RDC / Obsidian MCP 作 permanent executor
+- 把初始化 request 當作 Git commit/push authorization
+- 把所有 capability trigger複製進 consumer repo
 
-## 設計原則
+## Relationship to ChatGPT Project Instructions
 
-1. `專案顯示名稱` 可以中文，但 `專案代號` 應穩定
-2. `GitHub repo slug` 不假設等於顯示名稱
-3. `Obsidian 工作筆記` 用相對於 vault 的路徑表示即可
-4. 跨設備路徑用欄位與變數描述，不把單一 OS 絕對路徑當規則
-5. 專案內狀態檔與 Obsidian 工作筆記要能互相對照
-4. `startup` / `shutdown` 應把這裡視為單一真相來源
+ChatGPT Project Instructions 不由本文件生成；其 canonical generator contract是：
 
----
+`codex-sync/docs/chatgpt-project-bootstrap-library.md`
 
-## 不建議的寫法
-
-- 只寫專案名稱，不寫 repo
-- 只寫 repo，不寫工作筆記位置
-- 把 Obsidian 路徑寫成模糊描述
-- 依賴 skill 內硬編碼專案路徑
+兩者必須一致，但 authority分工不同：
+- ChatGPT Project Instructions：project-level conversational governance
+- Repository `CLAUDE.md`：repository bootstrap/control entrypoint
